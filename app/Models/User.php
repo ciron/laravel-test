@@ -18,9 +18,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'name', 'account_type', 'balance', 'email', 'password',
     ];
 
     /**
@@ -28,6 +26,11 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
     protected $hidden = [
         'password',
         'remember_token',
